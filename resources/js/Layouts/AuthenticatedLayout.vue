@@ -37,7 +37,14 @@ const showingNavigationDropdown = ref(false);
                                     :href="route('dashboard')"
                                     :active="route().current('dashboard')"
                                 >
-                                    Dashboard
+                                    PDV
+                                </NavLink>
+
+                                <NavLink
+                                    :href="route('produtos.index')"
+                                    :active="route().current('produtos.index')"
+                                >
+                                    PRODUTOS
                                 </NavLink>
                             </div>
                         </div>
@@ -144,7 +151,16 @@ const showingNavigationDropdown = ref(false);
                             :href="route('dashboard')"
                             :active="route().current('dashboard')"
                         >
-                            Dashboard
+                            PDV
+                        </ResponsiveNavLink>
+                    </div>
+
+                    <div class="space-y-1 pb-3 pt-2">
+                        <ResponsiveNavLink
+                            :href="route('produtos.index')"
+                            :active="route().current('produtos.index')"
+                        >
+                            PRODUTOS
                         </ResponsiveNavLink>
                     </div>
 
