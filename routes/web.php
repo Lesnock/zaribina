@@ -35,7 +35,9 @@ Route::middleware('auth')->group(function () {
     })->name('produtos.create');
 
     Route::get('/opcionais', function () {
-        return Inertia::render('Opcionais/List');
+        return Inertia::render('Opcionais/List', [
+            'options' => Option::all()
+        ]);
     })->name('options.index');
 
     Route::get('/opcionais/create', function () {
@@ -47,10 +49,11 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('Opcionais/Form', [
             'option' => $option
         ]);
-    })->name('options.create');
+    })->name('options.edit');
 
     Route::post('/opcionais', [OptionController::class, 'store'])->name('options.store');
     Route::put('/opcionais/{id}', [OptionController::class, 'update'])->name('options.update');
+    Route::delete('/opcionais/{id}', [OptionController::class, 'destroy'])->name('options.destroy');
 });
 
 require __DIR__.'/auth.php';

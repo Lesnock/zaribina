@@ -27,6 +27,9 @@ class OptionController extends Controller
             ]);
         }
 
+        session()->flash('message', 'Opcional adicionado com sucesso!');
+        session()->flash('type', 'success');
+
         return response()->json($option);
     }
 
@@ -54,6 +57,18 @@ class OptionController extends Controller
             }
         }
 
+        session()->flash('message', 'Opcional alterado com sucesso!');
+        session()->flash('type', 'success');
+
         return response()->json();
+    }
+
+    public function destroy(int $id)
+    {
+        $option = Option::with('values')->findOrFail($id);
+        $option->delete();
+
+        session()->flash('message', 'Opcional excluído com sucesso!');
+        session()->flash('type', 'success');
     }
 }

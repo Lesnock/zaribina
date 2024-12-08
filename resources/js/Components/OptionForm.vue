@@ -79,13 +79,7 @@ async function send() {
     try {
         const { method, url } = getEndpoint()
         const res = await axios[method](url, form.value)
-        notification.success({
-            title: 'Formulário salvo com sucesso',
-            duration: 4000
-        })
-        setTimeout(() => {
-            router.visit(route('options.index'))
-        }, 2000)
+        router.get(route('options.index'))
     } catch (error) {
         console.error(error)
         const message = error.response.data.error ?? 'Erro ao salvar formulário'

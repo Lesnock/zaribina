@@ -3,6 +3,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, router } from '@inertiajs/vue3';
+import { Option } from '@/types'
+import OptionTable from '@/Components/OptionTable.vue';
+
+defineProps<{
+    options: Option[]
+}>()
 </script>
 
 <template>
@@ -28,6 +34,9 @@ import { Head, router } from '@inertiajs/vue3';
                 <div
                     class="overflow-hidden bg-white shadow-sm sm:rounded-lg"
                 >
+                    <div class="p-6 text-gray-900">
+                        <OptionTable :options="options" />
+                    </div>
                 </div>
             </div>
         </div>

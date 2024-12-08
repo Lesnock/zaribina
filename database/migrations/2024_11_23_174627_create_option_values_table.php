@@ -15,6 +15,7 @@ return new class () extends Migration {
             $table->foreignId('option_id')->constrained();
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
