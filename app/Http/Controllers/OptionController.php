@@ -45,10 +45,12 @@ class OptionController extends Controller
         }
 
         foreach ($request->post('values') as $value) {
-            if (isset($value['id'])) {
+            if ($value['id']) {
                 $option->values->find($value['id'])->update(['name' => $value['name']]);
             } else {
-                $option->values()->save($value);
+                $option->values()->save(new OptionValue([
+                    'name' => $value['name']
+                ]));
             }
         }
 

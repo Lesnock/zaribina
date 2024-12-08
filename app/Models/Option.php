@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Option extends Model
 {
     protected $guarded = ['id'];
+
+    public function values()
+    {
+        return $this->hasMany(OptionValue::class);
+    }
 }

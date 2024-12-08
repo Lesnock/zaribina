@@ -28,7 +28,7 @@ const errors = ref<{
 })
 
 function addEmptyValue() {
-    return { name: '' }
+    return { id: null, name: '' }
 }
 
 function notifyInvalidForm() {
@@ -98,8 +98,11 @@ function getEndpoint() {
 
 onMounted(() => {
     if (props.option) {
-        form.value.values.name = props.option.name
-        form.value.values.values = [...props.option.values]
+        form.value.name = props.option.name
+        form.value.values = props.option.values.map(value => ({
+            id: value.id,
+            name: value.name
+        }))
     }
 })
 </script>

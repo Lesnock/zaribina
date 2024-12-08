@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OptionController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Option;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,6 +40,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/opcionais/create', function () {
         return Inertia::render('Opcionais/Form');
+    })->name('options.create');
+
+    Route::get('/opcionais/edit/{id}', function ($id) {
+        $option = Option::with('values')->findOrFail($id);
+        return Inertia::render('Opcionais/Form', [
+            'option' => $option
+        ]);
     })->name('options.create');
 
     Route::post('/opcionais', [OptionController::class, 'store'])->name('options.store');
