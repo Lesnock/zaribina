@@ -2,8 +2,9 @@
 import type { Option, OptionValue } from '@/types';
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
-import { NInput, NFormItem, NDynamicInput, NButton, useNotification } from 'naive-ui'
+import { NInput, NFormItem, NDynamicInput, NButton, NSpin, useNotification } from 'naive-ui'
 import { router } from '@inertiajs/vue3'
+import { delay } from '@/helpers'
 
 const notification = useNotification()
 
@@ -26,6 +27,8 @@ const errors = ref<{
     name: null,
     values: []
 })
+
+const loading = ref(false)
 
 function addEmptyValue() {
     return { id: null, name: '' }
@@ -62,9 +65,13 @@ function validate() {
     return true
 }
 
-function submit() {
-    if (!validate())
+async function submit() {
+    loading.value = true
+    await delay(500)
+    if (!validate()) {
+        loading.value = false
         return
+    }
     send()
 }
 
@@ -86,6 +93,8 @@ async function send() {
             title: message,
             duration: 4000
         })
+    } finally {
+        loading.value = false
     }
 }
 
@@ -109,28 +118,30 @@ onMounted(() => {
 
 <template>
     <div>
-        <NFormItem label="Nome" :validation-status="errors.name ? 'error' : ''" :feedback="errors.name">
-            <NInput
-                v-model:value="form.name"
-                placeholder="Digite o nome do opcional" />
-        </NFormItem>
+        <NSpin :show="loading">
+            <NFormItem label="Nome" :validation-status="errors.name ? 'error' : ''" :feedback="errors.name">
+                <NInput
+                    v-model:value="form.name"
+                    placeholder="Digite o nome do opcional" />
+            </NFormItem>
 
-        <NFormItem label="Valores">
-            <NDynamicInput v-model:value="form.values" @create="addEmptyValue">
-                <template #create-button-default>
-                    Adicionar Valor
-                </template>
-                <template #default="{ value, index }">
-                    <NInput
-                        v-model:value="value.name"
-                        :status="errors.values.find(v => v.index == index)?.error ? 'error' : ''"
-                        placeholder="Digite o nome do valor" />
-                </template>
-            </NDynamicInput>
-        </NFormItem>
+            <NFormItem label="Valores">
+                <NDynamicInput v-model:value="form.values" @create="addEmptyValue">
+                    <template #create-button-default>
+                        Adicionar Valor
+                    </template>
+                    <template #default="{ value, index }">
+                        <NInput
+                            v-model:value="value.name"
+                            :status="errors.values.find(v => v.index == index)?.error ? 'error' : ''"
+                            placeholder="Digite o nome do valor" />
+                    </template>
+                </NDynamicInput>
+            </NFormItem>
 
-        <NButton @click="submit" type="success">
-            Salvar
-        </NButton>
+            <NButton @click="submit" type="success">
+                Salvar
+            </NButton>
+        </NSpin>
     </div>
 </template>
