@@ -12,3 +12,15 @@ export type PageProps<
         user: User;
     };
 };
+
+export interface Option {
+    id?: number;
+    name: string;
+    values: OptionValue[];
+}
+
+export interface OptionValue {
+    id?: number;
+    option_id?: number;
+    name: string;
+}
