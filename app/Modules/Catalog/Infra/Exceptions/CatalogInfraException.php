@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Catalog\Exceptions;
+namespace App\Modules\Catalog\Infra\Exceptions;
 
-use App\Modules\Catalog\Enums\Errors;
+use App\Modules\Catalog\Infra\Enums\Errors;
 use Exception;
 
-class CatalogException extends Exception
+class CatalogInfraException extends Exception
 {
     public function __construct(Errors $error, array $placeholders = [])
     {

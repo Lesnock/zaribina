@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Catalog\Enums;
+namespace App\Modules\Catalog\Application\Enums;
 
 enum Errors: int
 {
