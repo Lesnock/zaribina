@@ -13,6 +13,11 @@ class CategoryName
         }
     }
 
+    public function equals(CategoryName $name): bool
+    {
+        return $this->name === $name->name;
+    }
+
     public function __toString(): string
     {
         return $this->name;

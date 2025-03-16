@@ -19,4 +19,24 @@ class Category
         TypeHelper::checkArrayInstances($options, Option::class);
         return new self(null, $name, $options);
     }
+
+    public function update(CategoryName $name, array $options): void
+    {
+        TypeHelper::checkArrayInstances($options, Option::class);
+        $this->updateName($name);
+        $this->updateOptions($options);
+    }
+
+    public function updateName(CategoryName $name): void
+    {
+        if (!$name->equals($this->name)) {
+            $this->name = $name;
+        }
+    }
+
+    public function updateOptions(array $options): void
+    {
+        TypeHelper::checkArrayInstances($options, Option::class);
+        $this->options = $options;
+    }
 }

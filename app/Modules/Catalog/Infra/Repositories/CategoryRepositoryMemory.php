@@ -13,6 +13,20 @@ class CategoryRepositoryMemory implements CategoryRepository
 
     public function save(Category $category): int
     {
+        if ($category->id) {
+            return $this->update($category);
+        }
+        return $this->add($category);
+    }
+
+    private function update(Category $category): int
+    {
+        $this->categories[$category->id - 1] = $category;
+        return $category->id;
+    }
+
+    private function add(Category $category): int
+    {
         $category->id = count($this->categories) + 1;
         $this->categories[] = $category;
         return $category->id;
