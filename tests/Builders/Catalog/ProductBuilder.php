@@ -31,6 +31,12 @@ class ProductBuilder
         return $this;
     }
 
+    public function withSellPrice(float $sellPrice): self
+    {
+        $this->data['sellPrice'] = $sellPrice;
+        return $this;
+    }
+
     public function build(): Product
     {
         return Product::rebuild(
