@@ -14,4 +14,13 @@ class TypeHelper
             }
         }
     }
+
+    public static function checkArrayTypes(array $array, string $type): void
+    {
+        foreach ($array as $item) {
+            if (gettype($item) !== $type) {
+                throw new InvalidArgumentException("All array items must be of type $type");
+            }
+        }
+    }
 }

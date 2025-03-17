@@ -22,21 +22,8 @@ class Category
 
     public function update(CategoryName $name, array $options): void
     {
-        TypeHelper::checkArrayInstances($options, Option::class);
-        $this->updateName($name);
-        $this->updateOptions($options);
-    }
-
-    public function updateName(CategoryName $name): void
-    {
-        if (!$name->equals($this->name)) {
-            $this->name = $name;
-        }
-    }
-
-    public function updateOptions(array $options): void
-    {
-        TypeHelper::checkArrayInstances($options, Option::class);
+        TypeHelper::checkArrayTypes($options, 'integer');
+        $this->name = $name;
         $this->options = $options;
     }
 }
