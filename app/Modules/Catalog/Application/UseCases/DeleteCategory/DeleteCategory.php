@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Catalog\Application\UseCases\UpdateCategory;
+namespace App\Modules\Catalog\Application\UseCases\DeleteCategory;
 
 use App\Modules\Catalog\Application\Repositories\CategoryRepository;
 
-class UpdateCategory
+class DeleteCategory
 {
     public function __construct(private CategoryRepository $repository)
     { }
