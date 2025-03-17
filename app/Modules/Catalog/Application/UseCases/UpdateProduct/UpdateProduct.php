@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Modules\Catalog\Application\UseCases\CreateProduct;
+namespace App\Modules\Catalog\Application\UseCases\UpdateProduct;
 
 use App\Modules\Catalog\Application\Repositories\ProductRepository;
-use App\Modules\Catalog\Domain\Product;
 use App\Modules\Catalog\Domain\ValueObjects\ProductCode;
 use App\Modules\Catalog\Domain\ValueObjects\ProductName;
 use App\Modules\Catalog\Domain\ValueObjects\ProductPaidPrice;
 use App\Modules\Catalog\Domain\ValueObjects\ProductSellPrice;
 
-class CreateProduct
+class UpdateProduct
 {
     public function __construct(private ProductRepository $repository)
     { }
 
     public function execute(Input $input): int
     {
-        $product = Product::create(
+        $product = $this->repository->get($input->id);
+        $product->update(
             name: new ProductName($input->name),
             code: new ProductCode($input->code),
             paidPrice: new ProductPaidPrice($input->paidPrice),

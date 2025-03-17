@@ -17,14 +17,12 @@ class ProductBuilder
         'paidPrice' => 100,
         'sellPrice' => 200,
         'photos' => [],
-        'optionValues' => [],
+        'optionValues' => [1, 2],
     ];
 
     public static function new(): self
     {
-        $builder = new self();
-        $builder->data['optionValues'][] = OptionValueBuilder::new()->build();
-        return $builder;
+        return new self();
     }
 
     public function withName(string $name): self
