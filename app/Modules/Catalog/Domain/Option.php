@@ -19,4 +19,17 @@ class Option
         TypeHelper::checkArrayInstances($values, OptionValue::class);
         return new self(null, $name, $values);
     }
+
+    public static function rebuild(int $id, OptionName $name, array $values): self
+    {
+        TypeHelper::checkArrayInstances($values, OptionValue::class);
+        return new self($id, $name, $values);
+    }
+
+    public function update(OptionName $name, array $values): void
+    {
+        TypeHelper::checkArrayInstances($values, OptionValue::class);
+        $this->name = $name;
+        $this->values = $values;
+    }
 }

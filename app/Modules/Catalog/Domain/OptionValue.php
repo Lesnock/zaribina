@@ -12,7 +12,12 @@ class OptionValue
     ) {
     }
 
-    public static function create(int $id, OptionValueName $name): self
+    public static function create(OptionValueName $name): self
+    {
+        return new self(null, $name);
+    }
+
+    public static function rebuild(int $id, OptionValueName $name): self
     {
         return new self($id, $name);
     }
