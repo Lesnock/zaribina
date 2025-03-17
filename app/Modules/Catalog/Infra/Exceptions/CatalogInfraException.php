@@ -3,9 +3,9 @@
 namespace App\Modules\Catalog\Infra\Exceptions;
 
 use App\Modules\Catalog\Infra\Enums\Errors;
-use Exception;
+use App\Modules\Shared\Exceptions\InfraException;
 
-class CatalogInfraException extends Exception
+class CatalogInfraException extends InfraException
 {
     public function __construct(Errors $error, array $placeholders = [])
     {

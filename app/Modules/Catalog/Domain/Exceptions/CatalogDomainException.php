@@ -3,9 +3,9 @@
 namespace App\Modules\Catalog\Domain\Exceptions;
 
 use App\Modules\Catalog\Domain\Enums\Errors;
-use Exception;
+use DomainException;
 
-class CatalogDomainException extends Exception
+class CatalogDomainException extends DomainException
 {
     public function __construct(Errors $error, array $placeholders = [])
     {

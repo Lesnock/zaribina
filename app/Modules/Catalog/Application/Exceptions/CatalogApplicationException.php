@@ -3,9 +3,9 @@
 namespace App\Modules\Catalog\Application\Exceptions;
 
 use App\Modules\Catalog\Application\Enums\Errors;
-use Exception;
+use App\Modules\Shared\Exceptions\ApplicationException;
 
-class CatalogException extends Exception
+class CatalogApplicationException extends ApplicationException
 {
     public function __construct(Errors $error, array $placeholders = [])
     {
