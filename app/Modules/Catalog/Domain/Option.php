@@ -14,9 +14,9 @@ class Option
     ) {
     }
 
-    public static function create(int $id, OptionName $name, array $values): self
+    public static function create(OptionName $name, array $values): self
     {
         TypeHelper::checkArrayInstances($values, OptionValue::class);
-        return new self($id, $name, $values);
+        return new self(null, $name, $values);
     }
 }
