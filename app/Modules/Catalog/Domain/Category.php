@@ -10,14 +10,21 @@ class Category
     private function __construct(
         public ?int $id,
         public CategoryName $name,
+        /** @var int[] */
         public array $options
     ) {
     }
 
     public static function create(CategoryName $name, array $options): self
     {
-        TypeHelper::checkArrayInstances($options, Option::class);
+        TypeHelper::checkArrayTypes($options, 'integer');
         return new self(null, $name, $options);
+    }
+
+    public static function rebuild(int $id, CategoryName $name, array $options): self
+    {
+        TypeHelper::checkArrayTypes($options, 'integer');
+        return new self($id, $name, $options);
     }
 
     public function update(CategoryName $name, array $options): void

@@ -9,7 +9,8 @@ use App\Modules\Catalog\Infra\Exceptions\CatalogInfraException;
 
 class CategoryRepositoryMemory implements CategoryRepository
 {
-    public array $categories = [];
+    public function __construct(public array $categories = [])
+    { }
 
     public function save(Category $category): int
     {
@@ -32,11 +33,22 @@ class CategoryRepositoryMemory implements CategoryRepository
         return $category->id;
     }
 
-    public function getById(int $id): Category
+    public function get(int $id): Category
     {
         foreach ($this->categories as $category) {
             if ($category->id === $id) {
                 return $category;
+            }
+        }
+        throw new CatalogInfraException(Errors::CATEGORY_NOT_FOUND);
+    }
+
+    public function delete(int $id): void
+    {
+        foreach ($this->categories as $key => $category) {
+            if ($category->id === $id) {
+                unset($this->categories[$key]);
+                return;
             }
         }
         throw new CatalogInfraException(Errors::CATEGORY_NOT_FOUND);

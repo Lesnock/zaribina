@@ -6,6 +6,7 @@ use App\Modules\Catalog\Domain\Category;
 
 interface CategoryRepository
 {
-    public function getById(int $id): Category;
+    public function get(int $id): Category;
     public function save(Category $category): int;
+    public function delete(int $id): void;
 }

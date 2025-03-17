@@ -12,7 +12,7 @@ class UpdateCategory
 
     public function execute(Input $input): int
     {
-        $category = $this->repository->getById($input->id);
+        $category = $this->repository->get($input->id);
         $category->update(
             name: new CategoryName($input->name), 
             options: $input->options
