@@ -32,4 +32,9 @@ class CategoryBuilder
             options: $this->data['options']
         );
     }
+
+    public function get(): array
+    {
+        return $this->data;
+    }
 }

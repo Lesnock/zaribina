@@ -10,7 +10,13 @@ use App\Modules\Catalog\Infra\Exceptions\CatalogInfraException;
 class CategoryRepositoryMemory implements CategoryRepository
 {
     public function __construct(public array $categories = [])
-    { }
+    {
+    }
+
+    public function count(): int
+    {
+        return count($this->categories);
+    }
 
     public function save(Category $category): int
     {
@@ -54,3 +60,4 @@ class CategoryRepositoryMemory implements CategoryRepository
         throw new CatalogInfraException(Errors::CATEGORY_NOT_FOUND);
     }
 }
+
