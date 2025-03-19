@@ -12,6 +12,11 @@ class OptionRepositoryMemory implements OptionRepository
     public function __construct(public array $options = [])
     { }
 
+    public function count(): int
+    {
+        return count($this->options);
+    }
+
     public function save(Option $option): int
     {
         if ($option->id) {

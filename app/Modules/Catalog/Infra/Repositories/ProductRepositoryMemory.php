@@ -12,6 +12,11 @@ class ProductRepositoryMemory implements ProductRepository
     public function __construct(public array $products = [])
     { }
 
+    public function count(): int
+    {
+        return count($this->products);
+    }
+
     public function save(Product $product): int
     {
         if ($product->id) {

@@ -34,4 +34,9 @@ class OptionBuilder
             values: $this->data['values']
         );
     }
+
+    public function get(): array
+    {
+        return $this->data;
+    }
 }
