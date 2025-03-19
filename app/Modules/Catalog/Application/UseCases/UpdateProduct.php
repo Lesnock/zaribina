@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Catalog\Application\UseCases\UpdateProduct;
+namespace App\Modules\Catalog\Application\UseCases;
 
 use App\Modules\Catalog\Application\Repositories\ProductRepository;
 use App\Modules\Catalog\Domain\ValueObjects\ProductCode;
@@ -13,16 +13,16 @@ class UpdateProduct
     public function __construct(private ProductRepository $repository)
     { }
 
-    public function execute(Input $input): int
+    public function execute(int $id, array $input): int
     {
-        $product = $this->repository->get($input->id);
+        $product = $this->repository->get($id);
         $product->update(
-            name: new ProductName($input->name),
-            code: new ProductCode($input->code),
-            paidPrice: new ProductPaidPrice($input->paidPrice),
-            sellPrice: new ProductSellPrice($input->sellPrice),
-            photos: $input->photos,
-            optionValues: $input->optionValues
+            name: new ProductName($input['name']),
+            code: new ProductCode($input['code']),
+            paidPrice: new ProductPaidPrice($input['paidPrice']),
+            sellPrice: new ProductSellPrice($input['sellPrice']),
+            photos: $input['photos'],
+            optionValues: $input['optionValues']
         );
         return $this->repository->save($product);
     }

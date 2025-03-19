@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Catalog\Application\UseCases\DeleteProduct;
+namespace App\Modules\Catalog\Application\UseCases;
 
 use App\Modules\Catalog\Application\Repositories\ProductRepository;
 

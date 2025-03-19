@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Catalog\Application\UseCases\DeleteOption;
+namespace App\Modules\Catalog\Application\UseCases;
 
 use App\Modules\Catalog\Application\Repositories\OptionRepository;
 

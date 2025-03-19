@@ -1,6 +1,6 @@
 <?php
 
-use App\Modules\Catalog\Application\UseCases\DeleteOption\DeleteOption;
+use App\Modules\Catalog\Application\UseCases\DeleteOption;
 use App\Modules\Catalog\Infra\Repositories\OptionRepositoryMemory;
 use Tests\Builders\Catalog\OptionBuilder;
 

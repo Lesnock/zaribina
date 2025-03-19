@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Catalog\Application\UseCases\CreateProduct;
+namespace App\Modules\Catalog\Application\UseCases;
 
 use App\Modules\Catalog\Application\Repositories\ProductRepository;
 use App\Modules\Catalog\Domain\Product;
@@ -14,15 +14,15 @@ class CreateProduct
     public function __construct(private ProductRepository $repository)
     { }
 
-    public function execute(Input $input): int
+    public function execute(array $input): int
     {
         $product = Product::create(
-            name: new ProductName($input->name),
-            code: new ProductCode($input->code),
-            paidPrice: new ProductPaidPrice($input->paidPrice),
-            sellPrice: new ProductSellPrice($input->sellPrice),
-            photos: $input->photos,
-            optionValues: $input->optionValues
+            name: new ProductName($input['name']),
+            code: new ProductCode($input['code']),
+            paidPrice: new ProductPaidPrice($input['paidPrice']),
+            sellPrice: new ProductSellPrice($input['sellPrice']),
+            photos: $input['photos'],
+            optionValues: $input['optionValues']
         );
         return $this->repository->save($product);
     }

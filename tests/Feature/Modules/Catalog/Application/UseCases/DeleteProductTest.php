@@ -1,6 +1,6 @@
 <?php
 
-use App\Modules\Catalog\Application\UseCases\DeleteProduct\DeleteProduct;
+use App\Modules\Catalog\Application\UseCases\DeleteProduct;
 use App\Modules\Catalog\Infra\Repositories\ProductRepositoryMemory;
 use Tests\Builders\Catalog\ProductBuilder;
 
