@@ -8,6 +8,7 @@ use App\Modules\Shared\Exceptions\DomainException;
 use App\Modules\Shared\Exceptions\InfraException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Controller extends BaseController
@@ -23,6 +24,8 @@ class Controller extends BaseController
             return $this->error($err->getMessage(), 400);
         } catch (InfraException $err) {
             return $this->error($err->getMessage(), 500);
+        } catch (ValidationException $err) {
+            return $this->error($err->getMessage(), 422);
         } catch (Throwable $err) {
             Log::error($err->getMessage(), ['trace' => $err->getTraceAsString()]);
             return $this->error("Ocorreu um erro ao executar esta ação", 500);

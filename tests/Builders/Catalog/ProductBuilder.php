@@ -31,6 +31,12 @@ class ProductBuilder
         return $this;
     }
 
+    public function withCode(string $code): self
+    {
+        $this->data['code'] = $code;
+        return $this;
+    }
+
     public function withSellPrice(float $sellPrice): self
     {
         $this->data['sellPrice'] = $sellPrice;
@@ -49,5 +55,9 @@ class ProductBuilder
             optionValues: $this->data['optionValues']
         );
     }
-}
 
+    public function get(): array
+    {
+        return $this->data;
+    }
+}

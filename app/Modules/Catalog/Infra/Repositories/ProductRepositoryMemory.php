@@ -58,4 +58,12 @@ class ProductRepositoryMemory implements ProductRepository
         }
         throw new CatalogInfraException(Errors::CATEGORY_NOT_FOUND);
     }
+
+    public function getLastCode(): string|null
+    {
+        if (empty($this->products)) {
+            return null;
+        }
+        return $this->products[count($this->products) - 1]->code->code;
+    }
 }

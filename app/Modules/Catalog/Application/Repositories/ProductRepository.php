@@ -10,4 +10,5 @@ interface ProductRepository
     public function count(): int;
     public function save(Product $product): int;
     public function delete(int $id): void;
+    public function getLastCode(): string|null;
 }
