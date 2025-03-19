@@ -3,6 +3,7 @@
 namespace App\Modules\Catalog\Infra\Presentation\Http\Controllers;
 
 use App\Modules\Catalog\Application\UseCases\CreateCategory;
+use App\Modules\Catalog\Application\UseCases\DeleteCategory;
 use App\Modules\Catalog\Application\UseCases\UpdateCategory;
 use App\Modules\Catalog\Infra\Presentation\Http\Requests\CreateCategoryRequest;
 use App\Modules\Catalog\Infra\Presentation\Http\Requests\UpdateCategoryRequest;
@@ -22,6 +23,13 @@ class CategoryController extends Controller
     {
         return $this->action(fn (UpdateCategoryRequest $request, UpdateCategory $usecase) =>
             $usecase->execute($id, $request->validated()), 
+        200);
+    }
+
+    public function delete(int $id): JsonResponse
+    {
+        return $this->action(fn (DeleteCategory $usecase) =>
+            $usecase->execute($id), 
         200);
     }
 }
