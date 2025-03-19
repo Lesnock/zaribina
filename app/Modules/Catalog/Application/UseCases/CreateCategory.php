@@ -10,6 +10,7 @@ class CreateCategory
 {
     public function __construct(private CategoryRepository $repository)
     {
+        //
     }
 
     public function execute(array $input): int

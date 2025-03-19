@@ -10,7 +10,6 @@ class Category
     private function __construct(
         public ?int $id,
         public CategoryName $name,
-        /** @var int[] */
         public array $options
     ) {
     }

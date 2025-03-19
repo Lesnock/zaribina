@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Catalog\Application\UseCases\DeleteCategory;
+namespace App\Modules\Catalog\Application\UseCases;
 
 use App\Modules\Catalog\Application\Repositories\CategoryRepository;
 

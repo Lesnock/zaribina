@@ -1,6 +1,6 @@
 <?php
 
-use App\Modules\Catalog\Application\UseCases\DeleteCategory\DeleteCategory;
+use App\Modules\Catalog\Application\UseCases\DeleteCategory;
 use App\Modules\Catalog\Infra\Repositories\CategoryRepositoryMemory;
 use Tests\Builders\Catalog\CategoryBuilder;
 
