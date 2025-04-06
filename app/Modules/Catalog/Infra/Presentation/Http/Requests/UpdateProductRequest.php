@@ -9,6 +9,7 @@ class UpdateProductRequest extends FormRequest
     public function rules()
     {
         return [
+            'categoryId' => 'required|integer',
             'name' => 'required|string',
             'paidPrice' => 'required|numeric',
             'sellPrice' => 'required|numeric',

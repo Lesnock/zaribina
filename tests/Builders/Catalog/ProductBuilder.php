@@ -12,6 +12,7 @@ class ProductBuilder
 {
     private array $data = [
         'id' => 1,
+        'categoryId' => 1,
         'name' => 'product',
         'code' => 'product-code',
         'paidPrice' => 100,
@@ -47,6 +48,7 @@ class ProductBuilder
     {
         return Product::rebuild(
             id: $this->data['id'],
+            categoryId: $this->data['categoryId'],
             name: new ProductName($this->data['name']),
             code: new ProductCode($this->data['code']),
             paidPrice: new ProductPaidPrice($this->data['paidPrice']),

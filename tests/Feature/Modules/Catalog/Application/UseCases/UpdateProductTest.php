@@ -12,6 +12,7 @@ test('product name is updated', function () {
     $sut = app(UpdateProduct::class);
     $input = [
         'id' => $product->id,
+        'categoryId' => $product->categoryId,
         'name' => 'Changed',
         'paidPrice' => 100.0,
         'sellPrice' => 150.0,

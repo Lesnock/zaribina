@@ -9,6 +9,7 @@ test('product is created and saved in repository', function () {
     $this->instance(ProductRepository::class, $repository);
     $sut = app(CreateProduct::class);
     $sut->execute([
+        'categoryId' => 1,
         'name' => 'Test Product',
         'paidPrice' => 100.0,
         'sellPrice' => 150.0,

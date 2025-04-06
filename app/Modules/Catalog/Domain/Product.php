@@ -12,6 +12,7 @@ class Product
 {
     private function __construct(
         public ?int $id,
+        public ?int $categoryId,
         public ProductName $name,
         public ProductCode $code,
         public ProductPaidPrice $paidPrice,
@@ -22,6 +23,7 @@ class Product
     }
 
     public static function create(
+        ?int $categoryId,
         ProductName $name,
         ProductCode $code,
         ProductPaidPrice $paidPrice,
@@ -32,11 +34,12 @@ class Product
     {
         TypeHelper::checkArrayTypes($photos, 'string');
         TypeHelper::checkArrayTypes($optionValues, 'integer');
-        return new self(null, $name, $code, $paidPrice, $sellPrice, $photos, $optionValues);
+        return new self(null, $categoryId, $name, $code, $paidPrice, $sellPrice, $photos, $optionValues);
     }
 
     public static function rebuild(
         int $id,
+        int $categoryId,
         ProductName $name,
         ProductCode $code,
         ProductPaidPrice $paidPrice,
@@ -47,10 +50,11 @@ class Product
     {
         TypeHelper::checkArrayTypes($photos, 'string');
         TypeHelper::checkArrayTypes($optionValues, 'integer');
-        return new self($id, $name, $code, $paidPrice, $sellPrice, $photos, $optionValues);
+        return new self($id, $categoryId, $name, $code, $paidPrice, $sellPrice, $photos, $optionValues);
     }
 
     public function update(
+        ?int $categoryId,
         ProductName $name,
         ProductCode $code,
         ProductPaidPrice $paidPrice,
@@ -61,6 +65,7 @@ class Product
     {
         TypeHelper::checkArrayTypes($photos, 'string');
         TypeHelper::checkArrayTypes($optionValues, 'integer');
+        $this->categoryId = $categoryId;
         $this->name = $name;
         $this->code = $code;
         $this->paidPrice = $paidPrice;

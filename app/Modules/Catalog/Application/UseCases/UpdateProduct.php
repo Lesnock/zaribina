@@ -20,6 +20,7 @@ class UpdateProduct
     {
         $product = $this->repository->get($id);
         $product->update(
+            categoryId: $input['categoryId'],
             name: new ProductName($input['name']),
             code: new ProductCode($this->productCodeGeneratorService->execute()),
             paidPrice: new ProductPaidPrice($input['paidPrice']),

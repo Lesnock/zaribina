@@ -20,6 +20,7 @@ class CreateProduct
     public function execute(array $input): int
     {
         $product = Product::create(
+            categoryId: $input['categoryId'],
             name: new ProductName($input['name']),
             code: new ProductCode($this->productCodeGeneratorService->execute()),
             paidPrice: new ProductPaidPrice($input['paidPrice']),
